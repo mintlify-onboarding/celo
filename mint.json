@@ -47,7 +47,16 @@
                     "setup/testnet-wallets",
                     "setup/local-development-chain-with-protocol-contracts"
                 ]
-              }
+            },
+            {
+                "group": "Build",
+                "pages": [
+                    "build/build-with-celo",
+                    "build/deploy-on-celo-with-remix",
+                    "build/deploy-on-celo-with-truffle",
+                    "build/deploy-on-celo-with-hardhat"
+                ]
+            }
         ]
       }
     ],
