@@ -1,14 +1,9 @@
 ---
 title: "Using Mac"
+description: "How to set up a local development environment for Celo using Mac."
 ---
 
-How to set up a local development environment for Celo using Mac.
-
----
-
-tip
-
-While many commands will be the same, you may need to follow the instructions for your specific OS when installing software. The Celo docs have some resources for [Windows development](/developer/setup/windows).
+<Tip>While many commands will be the same, you may need to follow the instructions for your specific OS when installing software. The Celo docs have some resources for [Windows development](/developer/setup/windows).</Tip>
 
 Before building on Celo, you need to set up a development environment to make sure you have the proper tools to build an application. This setup includes a combination of general development tools, Celo specific tools, and mobile development tools.
 
@@ -36,14 +31,14 @@ While Xcode falls under the Celo Prerequisites, Xcode takes a long time to downl
 
 #### Install Node and npm via nvm[](#install-node-and-npm-via-nvm "Direct link to heading")
 
-```
+```bash
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 
 ```
 
 Verify the installation by running:
 
-```
+```bash
 command -v nvm
 
 ```
@@ -56,7 +51,7 @@ info
 
 You can switch node versions using
 
-```
+```bash
 nvm use <version>
 
 ```
@@ -67,14 +62,14 @@ nvm use <version>
 
 **Install Homebrew**
 
-```
+```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 ```
 
 Get the latest packages
 
-```
+```bash
 brew update
 
 ```
@@ -87,7 +82,7 @@ brew update
 
 Option 1: Since you already have `npm` installed, you can use it to install `yarn`
 
-```
+```bash
 npm install -g yarn
 
 ```
@@ -100,7 +95,7 @@ The `-g` is short for `--global`. This flag means you are installing this packag
 
 Option 2: Install `yarn` with Homebrew
 
-```
+```bash
 # Update brew if you haven't recently
 $ brew update
 
@@ -117,7 +112,7 @@ $ brew install yarn
 
 Since you already setup `npm`, you can now install the `expo-cli` package.
 
-```
+```bash
 npm install -g expo-cli
 
 ```
@@ -132,7 +127,7 @@ You might need to install [Docker Desktop for your OS](https://docs.docker.com/g
 
 Once you've done that, you can access `docker` via your cli.
 
-```
+```bash
 docker --version
 
 ```
@@ -147,7 +142,7 @@ Similar to how you might use a framework like React instead of vanilla JavaScrip
 
 **Install Truffle**
 
-```
+```bash
 npm install -g truffle
 
 ```
@@ -158,7 +153,7 @@ You will need to configure Truffle to work with Celo. Connecting to Celo and man
 
 The Truffle deployer may have trouble estimating the deployment transaction gas limit, for which you will receive an error like:
 
-```
+```bash
 Error:  *** Deployment Failed ***
 
 "Migrations" -- invalid argument 0: json: cannot unmarshal invalid hex string into Go value of type hexutil.Bytes.
@@ -169,7 +164,7 @@ You can resolve this by specifying the `gas` field in the network details in `tr
 
 For example:
 
-```
+```bash
 alfajores: {
   provider: kit.connection.web3.currentProvider,
   network_id: 44787,
@@ -188,7 +183,7 @@ The [Celo CLI](/cli) is a command-line tool for interacting with the Celo Protoc
 
 **Install Celo CLI**
 
-```
+```bash
 npm install -g @celo/celocli
 
 ... # lots of logs
@@ -222,7 +217,7 @@ Celo's focus on mobile-first means that the priority has been on mobile applicat
 
 You can install [Watchman](https://facebook.github.io/watchman/docs/install.html) with brew
 
-```
+```bash
 # Update brew if you haven't recently
 $ brew update
 

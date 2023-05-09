@@ -1,20 +1,15 @@
 ---
 title: "Using Windows"
+description: "How to set up a local development environment for Celo using Windows."
 ---
 
-How to set up a local development environment for Celo using Windows.
-
----
-
-tip
-
-Many popular tools and resources for blockchain development are written for developers working on UNIX machines. It is common for developers working on Windows to encounter errors that are not covered in the documentation and have no luck with Google. Fortunately, Microsoft makes it easy to run a UNIX machine directly from a Windows desktop with the [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/faq).
+<Tip>Many popular tools and resources for blockchain development are written for developers working on UNIX machines. It is common for developers working on Windows to encounter errors that are not covered in the documentation and have no luck with Google. Fortunately, Microsoft makes it easy to run a UNIX machine directly from a Windows desktop with the [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/faq).</Tip>
 
 ### **Getting set up with Windows**[](#getting-set-up-with-windows "Direct link to heading")
 
 Open PowerShell as an administrator and run
 
-```
+```bash
 Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
 
 ```
@@ -25,7 +20,7 @@ Next, install a Linux distribution from the Microsoft Store. When developing thi
 
 Set up your Linux distro by setting a username and password then update and upgrade the packages by running the following command in the terminal:
 
-```
+```bash
 sudo apt update && sudo apt upgrade
 
 ```
@@ -38,7 +33,7 @@ Now that you have Linux installed, let’s install [nvm](https://github.com/nvm-
 
 Run the following commands in the Linux terminal.
 
-```
+```bash
 # Installing Nvm
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 source ~/.bashrc
@@ -53,7 +48,7 @@ Running `$ node -v` in the terminal should print a node version if it is install
 
 Yarn is a package manager similar to npm. The [celo-monorepo](https://github.com/celo-org/celo-monorepo/) uses yarn to build and manage packages. Install yarn with the following command.
 
-```
+```bash
 # Installing Yarn - https://yarnpkg.com/en/docs/install#debian-stable
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
