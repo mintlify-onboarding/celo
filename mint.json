@@ -1,0 +1,48 @@
+{
+    "name": "Celo",
+    "logo": {
+      "light": "/logo/light.png",
+      "dark": "/logo/dark.png"
+    },
+    "favicon": "/favicon.png",
+    "colors": {
+      "primary": "#FCFF52",
+      "light": "#F7F97F",
+      "dark": "#E4E740"
+    },
+    "topbarCtaButton": {
+      "name": "Build with Celo",
+      "url": "https://celo.org/developers"
+    },
+    "topbarLinks": [
+      {
+        "name": "Join the Community",
+        "url": "http://chat.celo.org/"
+      }
+    ],
+    "anchors": [
+      {
+        "name": "Support",
+        "icon": "comments",
+        "url": "https://forum.celo.org/"
+      },
+      {
+        "name": "Suggest an Improvement",
+        "icon": "github",
+        "url": "https://github.com/celo-org/docs/issues/new"
+      }
+    ],
+    "navigation": [
+      {
+        "group": "Developers",
+        "pages": [
+            "developer"
+        ]
+      }
+    ],
+    "footerSocials":
+      {
+          "twitter": "https://twitter.com/CeloOrg?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor",
+          "linkedin": "https://www.linkedin.com/company/celo-foundation/"
+      }
+  }
