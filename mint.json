@@ -6,9 +6,9 @@
     },
     "favicon": "/favicon.png",
     "colors": {
-      "primary": "#FCFF52",
-      "light": "#F7F97F",
-      "dark": "#E4E740"
+      "primary": "#66853F",
+      "light": "#FCFF52",
+      "dark": "#304910"
     },
     "topbarCtaButton": {
       "name": "Build with Celo",
@@ -36,7 +36,18 @@
       {
         "group": "Developers",
         "pages": [
-            "developer"
+            "developer",
+            {
+                "group": "Setup",
+                "pages": [
+                    "setup/overview",
+                    "setup/using-mac",
+                    "setup/using-windows",
+                    "setup/deploy-on-celo-with-replit",
+                    "setup/testnet-wallets",
+                    "setup/local-development-chain-with-protocol-contracts"
+                ]
+              }
         ]
       }
     ],
