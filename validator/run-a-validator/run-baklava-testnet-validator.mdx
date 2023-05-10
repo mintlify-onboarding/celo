@@ -184,9 +184,11 @@ Note that Account and all the signer keys must be unique and may not be reused.
 
 First, you'll need to generate account keys for your Validator and Validator Group.
 
-danger
-
-These keys will control your locked CELO, and thus should be handled with care. Store and back these keys up in a secure manner, as there will be no way to recover them if lost or stolen.
+<Warning>
+  These keys will control your locked CELO, and thus should be handled with
+  care. Store and back these keys up in a secure manner, as there will be no way
+  to recover them if lost or stolen.
+</Warning>
 
 ```bash
 # On your local machine
@@ -220,9 +222,19 @@ docker run --name celo-accounts -it --restart always --stop-timeout 300 -p 127.0
 
 ```
 
-danger
-
-**Security**: The command line above includes the parameter `--http.addr 0.0.0.0` which makes the Celo Blockchain software listen for incoming RPC requests on all network adaptors. Exercise extreme caution in doing this when running outside Docker, as it means that any unlocked accounts and their funds may be accessed from other machines on the Internet. In the context of running a Docker container on your local machine, this together with the `docker -p 127.0.0.1:localport:containerport` flags allows you to make RPC calls from outside the container, i.e from your local host, but not from outside your machine. Read more about [Docker Networking](https://docs.docker.com/network/network-tutorial-standalone/#use-user-defined-bridge-networks) here.
+<Warning>
+  **Security**: The command line above includes the parameter `--http.addr
+  0.0.0.0` which makes the Celo Blockchain software listen for incoming RPC
+  requests on all network adaptors. Exercise extreme caution in doing this when
+  running outside Docker, as it means that any unlocked accounts and their funds
+  may be accessed from other machines on the Internet. In the context of running
+  a Docker container on your local machine, this together with the `docker -p
+  127.0.0.1:localport:containerport` flags allows you to make RPC calls from
+  outside the container, i.e from your local host, but not from outside your
+  machine. Read more about [Docker
+  Networking](https://docs.docker.com/network/network-tutorial-standalone/#use-user-defined-bridge-networks)
+  here.
+</Warning>
 
 ### Deploy a Validator[](#deploy-a-validator "Direct link to heading")
 
