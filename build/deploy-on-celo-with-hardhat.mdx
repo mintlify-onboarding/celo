@@ -14,15 +14,15 @@ How to deploy a smart contract to Celo testnet, mainnet, or a local network usin
 
 To deploy on Celo using Hardhat, you should have Celo set up Celo in your local environment. If you prefer to deploy without a local environment, you can deploy using Remix or Replit.
 
-* [Using Windows](/developer/setup/windows)
-* [Using Mac](/developer/setup/mac)
-* [Using Replit](/developer/setup/replit)
+- [Using Windows](/developer/setup/windows)
+- [Using Mac](/developer/setup/mac)
+- [Using Replit](/developer/setup/replit)
 
 ## Create Hardhat Project[](#create-hardhat-project "Direct link to heading")
 
 Choose one of the following items to prepare a dApp to deploy on Celo.
 
-* Follow the [installation instructions and quickstart](https://hardhat.org/getting-started/#installation) to build and deploy your smart contract.
+- Follow the [installation instructions and quickstart](https://hardhat.org/getting-started/#installation) to build and deploy your smart contract.
 
 ## Update the hardhat.config.js file[](#update-the-hardhatconfigjs-file "Direct link to heading")
 
@@ -32,22 +32,25 @@ Open [hardhat.config.js](https://hardhat.org/config/) in a text editor and repla
 
 Using Celo Ganache CLI creates test accounts at the localhost on port 7545\. The private network setup connects to your localhost on this port and gives you access to your accounts on ganache-cli.
 
-```
+```bash
     localhost: {
       url: "http://127.0.0.1:7545"
     },
 
 ```
 
-tip
-
-If you choose to [Set up a Local Development Chain](/developer/setup/development-chain), your blockchain will also be hosted on a private network on localhost. This same configuration can be used to connect to the local development chain.
+<Tip>
+  If you choose to [Set up a Local Development
+  Chain](/developer/setup/development-chain), your blockchain will also be
+  hosted on a private network on localhost. This same configuration can be used
+  to connect to the local development chain.
+</Tip>
 
 ### Connect to Testnet using Forno[](#connect-to-testnet-using-forno "Direct link to heading")
 
 Using [Forno](/network/node/forno) allows you to connect to the Celo test blockchain without running a local node. The testnet configuration uses Forno to connect you to the Celo Testnet (Alfajores) using HDWalletProvider and the mnemonic stored in your **.env** file.
 
-```
+```java
    alfajores: {
      url: "https://alfajores-forno.celo-testnet.org",
      accounts: {
@@ -59,15 +62,16 @@ Using [Forno](/network/node/forno) allows you to connect to the Celo test blockc
 
 ```
 
-note
-
-Celo uses a different account derivation path than Ethereum, so you have to specify "m/44'/52752'/0'/0" as the path.
+<Note>
+  Celo uses a different account derivation path than Ethereum, so you have to
+  specify "m/44'/52752'/0'/0" as the path.
+</Note>
 
 ### Connect to Mainnet using Forno[](#connect-to-mainnet-using-forno "Direct link to heading")
 
 Using [Forno](/network/node/forno) also allows you to connect to the Celo main blockchain without running a local node. The mainnet configuration uses Forno to connect you to the Celo Mainnet using HDWalletProvider and the mnemonic stored in your **.env** file.
 
-```
+```java
    celo: {
      url: "https://forno.celo.org",
      accounts: {
@@ -79,22 +83,24 @@ Using [Forno](/network/node/forno) also allows you to connect to the Celo main b
 
 ```
 
-tip
-
-[Forno](/network/node/forno) is a cLabs hosted node service for interacting with the Celo network. This allows you to connect to the Celo Blockchain without having to run your own node.
+<Tip>
+  [Forno](/network/node/forno) is a cLabs hosted node service for interacting
+  with the Celo network. This allows you to connect to the Celo Blockchain
+  without having to run your own node.
+</Tip>
 
 ## Deploy to Celo[](#deploy-to-celo "Direct link to heading")
 
 Run the following command from your root project directory to deploy to Celo Alfajores testnet.
 
-```
+```java
 npx hardhat run scripts/sample-script.js --network alfajores
 
 ```
 
 ...or run this command to deploy to Celo mainnet.
 
-```
+```java
 npx hardhat run scripts/sample-script.js --network celo
 
 ```
@@ -111,7 +117,7 @@ Learn more about building and deploying dApps using the [HardHat documentation](
 
 ## Verify Contracts on Celo[](#verify-contracts-on-celo "Direct link to heading")
 
-* [Using Celo Explorer](/developer/verify/celo-explorer)
-* [Using Remix](/developer/verify/remix)
-* [Using CeloScan](/developer/verify/celoscan)
-* [Using Hardhat](/developer/verify/hardhat)
+- [Using Celo Explorer](/developer/verify/celo-explorer)
+- [Using Remix](/developer/verify/remix)
+- [Using CeloScan](/developer/verify/celoscan)
+- [Using Hardhat](/developer/verify/hardhat)
