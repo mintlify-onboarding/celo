@@ -75,7 +75,33 @@
             "libraries-and-sdks/react-celo",
             "libraries-and-sdks/rainbowkit-celo"
           ]
-        }
+        },
+        {
+          "group": "Verification",
+          "pages": [
+            "verification/verify-contract-deployed-on-celo",
+            "verification/verify-contract-deployed-on-celo",
+            "verification/verify-smart-contract-using-celoscan",
+            "verification/verify-smart-contract-using-remix",
+            "verification/verify-smart-contract-using-hardhat"
+          ]
+        },
+        {
+          "group": "Migrate to Celo",
+          "pages": ["celo-for-ethereum-developers"]
+        },
+        {
+          "group": "Celo Examples",
+          "pages": [
+            "code-examples/celo-composer",
+            "code-examples/developer-blog",
+            "code-examples/celo-blog",
+            "code-examples/figment",
+            "code-examples/dacade"
+          ]
+        },
+        "explorer",
+        "faucet"
       ]
     },
     {
