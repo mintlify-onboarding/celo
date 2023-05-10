@@ -80,7 +80,7 @@
           "group": "Verification",
           "pages": [
             "verification/verify-contract-deployed-on-celo",
-            "verification/verify-contract-deployed-on-celo",
+            "verification/verify-smart-contract-using-celo-explorer",
             "verification/verify-smart-contract-using-celoscan",
             "verification/verify-smart-contract-using-remix",
             "verification/verify-smart-contract-using-hardhat"
