@@ -89,6 +89,37 @@
         "integration/listings",
         "integration/cloud-hsm"
       ]
+    },
+    {
+      "group": "Validators",
+      "pages": [
+        "validator/overview",
+        {
+          "group": "Run a Validator",
+          "pages": [
+            "validator/run-a-validator/running-a-validator",
+            "validator/run-a-validator/run-baklava-testnet-validator"
+          ]
+        },
+        "validator/attestation",
+        {
+          "group": "Key Management",
+          "pages": [
+            "validator/key-management/summary",
+            "validator/key-management/detailed-role-descriptions",
+            "validator/key-management/validator-signer-key-rotation"
+          ]
+        },
+        "validator/security",
+        "validator/monitoring",
+        "validator/devops-best-practices",
+        "validator/node-upgrade",
+        "validator/proxy",
+        "validator/validator-explorer",
+        "validator/celo-foundation-voting-policy",
+        "validator/celo-signal",
+        "validator/troubleshooting-faq"
+      ]
     }
   ],
   "footerSocials": {
