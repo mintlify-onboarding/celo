@@ -1,9 +1,6 @@
 ---
 title: "Listings"
----
-
-Support for digital asset exchanges or ranking sites that would like to run a Celo node and audit your setup.
-
+description: "Support for digital asset exchanges or ranking sites that would like to run a Celo node and audit your setup."
 ---
 
 ## Support[](#support "Direct link to heading")
@@ -40,10 +37,10 @@ You can also view the forum post about the name change [here](https://forum.celo
 
 ### Address for CELO and Stable Value Currencies[](#address-for-celo-and-stable-value-currencies "Direct link to heading")
 
-* CELO ($CELO) - [0x471ece3750da237f93b8e339c536989b8978a438](https://explorer.celo.org/address/0x471ece3750da237f93b8e339c536989b8978a438/transactions)
-* Celo Dollar ($cUSD) - [0x765de816845861e75a25fca122bb6898b8b1282a](https://explorer.celo.org/address/0x765de816845861e75a25fca122bb6898b8b1282a/transactions)
-* Celo Euro ($cEUR) - [0xd8763cba276a3738e6de85b4b3bf5fded6d6ca73](https://explorer.celo.org/address/0xd8763cba276a3738e6de85b4b3bf5fded6d6ca73/transactions)
-* Celo Brazilian Real ($cREAL) - [0xe8537a3d056DA446677B9E9d6c5dB704EaAb4787](https://explorer.celo.org/address/0xe8537a3d056DA446677B9E9d6c5dB704EaAb4787/transactions)
+- CELO ($CELO) - [0x471ece3750da237f93b8e339c536989b8978a438](https://explorer.celo.org/address/0x471ece3750da237f93b8e339c536989b8978a438/transactions)
+- Celo Dollar ($cUSD) - [0x765de816845861e75a25fca122bb6898b8b1282a](https://explorer.celo.org/address/0x765de816845861e75a25fca122bb6898b8b1282a/transactions)
+- Celo Euro ($cEUR) - [0xd8763cba276a3738e6de85b4b3bf5fded6d6ca73](https://explorer.celo.org/address/0xd8763cba276a3738e6de85b4b3bf5fded6d6ca73/transactions)
+- Celo Brazilian Real ($cREAL) - [0xe8537a3d056DA446677B9E9d6c5dB704EaAb4787](https://explorer.celo.org/address/0xe8537a3d056DA446677B9E9d6c5dB704EaAb4787/transactions)
 
 ### Useful API endpoints[](#useful-api-endpoints "Direct link to heading")
 
@@ -55,7 +52,7 @@ The following are useful API endpoints available to you that would help you in y
 
 For querying the API on total coins in circulation in CELO, which are the total amount of coins in existence right now, the following endpoint will provide you with that:
 
-```
+```bash
 $ curl  [https://thecelo.com/api/v0.1.js?method=ex_totalcoins](https://thecelo.com/api/v0.1.js?method=ex_totalcoins) {"code":"200","msg":"success","data":{"CELO":608485841.9959723,"cUSD":10250632.56099673}}
 
 ```
@@ -66,7 +63,7 @@ $ curl  [https://thecelo.com/api/v0.1.js?method=ex_totalcoins](https://thecelo.c
 
 Circulating Supply refers to the # of coins that are circulating in the market and in the general public's hands.
 
-```
+```bash
 $ curl https://thecelo.com/api/v0.1.js?method=ex_cusd_circulating
 11353464.550486518
 
@@ -84,15 +81,15 @@ For API endpoints useful for listing that follow [CMC requirements](https://docs
 
 ##### Mento Addresses[](#mento-addresses "Direct link to heading")
 
-* cUSD/CELO contract - [0x67316300f17f063085Ca8bCa4bd3f7a5a3C66275](https://explorer.celo.org/address/0x67316300f17f063085Ca8bCa4bd3f7a5a3C66275/transactions)
-* cEUR/CELO contract - [0xE383394B913d7302c49F794C7d3243c429d53D1d](https://explorer.celo.org/address/0xE383394B913d7302c49F794C7d3243c429d53D1d/transactions)
-* cREAL/CELO contract - [0x8f2cf9855C919AFAC8Bd2E7acEc0205ed568a4EA](https://explorer.celo.org/address/0x8f2cf9855C919AFAC8Bd2E7acEc0205ed568a4EA/transactions)
+- cUSD/CELO contract - [0x67316300f17f063085Ca8bCa4bd3f7a5a3C66275](https://explorer.celo.org/address/0x67316300f17f063085Ca8bCa4bd3f7a5a3C66275/transactions)
+- cEUR/CELO contract - [0xE383394B913d7302c49F794C7d3243c429d53D1d](https://explorer.celo.org/address/0xE383394B913d7302c49F794C7d3243c429d53D1d/transactions)
+- cREAL/CELO contract - [0x8f2cf9855C919AFAC8Bd2E7acEc0205ed568a4EA](https://explorer.celo.org/address/0x8f2cf9855C919AFAC8Bd2E7acEc0205ed568a4EA/transactions)
 
 ##### Summary[](#summary "Direct link to heading")
 
 Summary overview of market data for all tickers and all markets. These endpoints don't yet support cEUR.
 
-```
+```bash
 $ curl https://thecelo.com/api/v0.1.js?method=ex_summary
 
 {"trading_pairs":"CELO_CUSD","last_price":2.6143,"lowest_ask":2.5933609958506225,"highest_bid":2.5676,"base_volume":37524.32000000003,"quote_volume":14714.520000000002,"price_change_percent_24h":3.7027120070382127,"highest_price_24h":2.649,"lowest_price_24h":2.4787}}
@@ -103,7 +100,7 @@ $ curl https://thecelo.com/api/v0.1.js?method=ex_summary
 
 In depth details of the assets available on the exchange.
 
-```
+```bash
 $ curl https://thecelo.com/api/v0.1.js?method=ex_assets
 
 {"code":"200","msg":"success","data":{"CELO":{"name":"CELO","unified_cryptoasset_id":"5567","can_withdraw":"true","can_deposit":"true","min_withdraw":"0.000000000000000001","max_withdraw":"0.000000000000000001","maker_fee":"0.00","taker_fee":"0.005"},"CUSD":{"name":"Celo Dollars","unified_cryptoasset_id":"825","can_withdraw":"true","can_deposit":"true","min_withdraw":"0.000000000000000001","max_withdraw":"0.000000000000000001","maker_fee":"0.00","taker_fee":"0.005"}}}
@@ -114,7 +111,7 @@ $ curl https://thecelo.com/api/v0.1.js?method=ex_assets
 
 24-hour rolling window price change statistics.
 
-```
+```bash
 $ curl https://thecelo.com/api/v0.1.js?method=ex_ticker
 
 {"code":"200","msg":"success","data":{"CELO_CUSD":{"base_id":"5567","quote_id":"825","last_price":2.6124,"quote_volume":14789.520000000002,"base_volume":37720.30000000003,"isFrozen":"0"}}}
@@ -125,7 +122,7 @@ $ curl https://thecelo.com/api/v0.1.js?method=ex_ticker
 
 Market depth of a trading pair. One array containing a list of ask prices and another array containing bid prices.
 
-```
+```bash
 $ curl https://thecelo.com/api/v0.1.js?method=ex_orderbook
 
 {"code":"200","msg":"success","data":{"timestamp":1601061465962,"bids":[["2.5964","100"]],"asks":[["2.622606871230003","100"]]}}
@@ -136,7 +133,7 @@ $ curl https://thecelo.com/api/v0.1.js?method=ex_orderbook
 
 Recently completed (past 24h) trades.
 
-```
+```bash
 $ curl https://thecelo.com/api/v0.1.js?method=ex_celocusd
 
 {"code":"200","msg":"success","data":{"CELO_CUSD":[{"trade_id":2697341,"timestamp":1601061491,"price":0.38238291620515147,"quote_volume":25,"base_volume":65.37948987916423,"type":"Sell"},{"trade_id":2697336,"timestamp":1601061466,"price":0.382293821845672,"quote_volume":25,"base_volume":65.39472670341044,"type":"Sell"}]}}

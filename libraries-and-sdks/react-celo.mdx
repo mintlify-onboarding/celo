@@ -1,9 +1,6 @@
 ---
 title: "react-celo"
----
-
-The easiest way to access [ContractKit](https://www.npmjs.com/package/@celo/contractkit) in your React applications.
-
+description: "The easiest way to access [ContractKit](https://www.npmjs.com/package/@celo/contractkit) in your React applications."
 ---
 
 ## react-celo[](#react-celo-1 "Direct link to heading")
@@ -14,17 +11,17 @@ Now your DApp can be made available to everyone in the Celo ecosystem, from Valo
 
 By default react-celo is styled so that you can drop it into your application and go, however it's fully customisable so you can maintain a consistent UX throughout your application.
 
-* [Github repo](https://github.com/celo-org/react-celo)
-* [Demo page](https://react-celo.vercel.app/)
+- [Github repo](https://github.com/celo-org/react-celo)
+- [Demo page](https://react-celo.vercel.app/)
 
 ## Table of Contents[](#table-of-contents "Direct link to heading")
 
-* [Installation](#install)
-* [Supported Wallets](#supported-wallets)
-* [Usage](#usage)
-* [Notes](#notes)
-* [Support](#support)
-* [Guides](#guides)
+- [Installation](#install)
+- [Supported Wallets](#supported-wallets)
+- [Usage](#usage)
+- [Notes](#notes)
+- [Support](#support)
+- [Guides](#guides)
 
 ## Install[](#install "Direct link to heading")
 
@@ -35,16 +32,16 @@ yarn add @celo/react-celo @celo/contractkit
 
 ## Supported wallets[](#supported-wallets "Direct link to heading")
 
-* Celo Dance
-* Celo Extension Wallet (Metamask fork)
-* Celo Terminal
-* Celo Wallet
-* Ledger
-* MetaMask
-* Plaintext private key
-* [Omni](https://omni.app)
-* Valora
-* WalletConnect
+- Celo Dance
+- Celo Extension Wallet (Metamask fork)
+- Celo Terminal
+- Celo Wallet
+- Ledger
+- MetaMask
+- Plaintext private key
+- [Omni](https://omni.app)
+- Valora
+- WalletConnect
 
 ## Basic Usage[](#basic-usage "Direct link to heading")
 
@@ -52,7 +49,7 @@ yarn add @celo/react-celo @celo/contractkit
 
 react-celo uses [React's Context.Provider](https://reactjs.org/docs/context.html#contextprovider) under the hood to inject state throughout your application. You need to make sure your application is wrapped with the provider in order to be able to access all the goodies react-celo provides.
 
-```
+```java
 import { CeloProvider } from "@celo/react-celo";
 import "@celo/react-celo/lib/styles.css";
 
@@ -80,7 +77,7 @@ function App() {
 
 react-celo provides a list of default wallets (CeloExtensionWallet, Injected, Ledger, MetaMask, PrivateKey (dev only) and WalletConnect). It can be configured as shown below.
 
-```
+```java
 <CeloProvider
   dapp={{
     name: "My awesome dApp",
@@ -114,7 +111,7 @@ react-celo provides a list of default wallets (CeloExtensionWallet, Injected, Le
 
 You can also add new custom wallets that don't exist in the registry or aren't in our defaults. For now, we only support custom wallets that implement the walletconnect protocol, but more may come in the future. In the example below, we're hiding all wallets except a new custom wallet.
 
-```
+```java
 <CeloProvider
   dapp={{
     name: "My awesome dApp",
@@ -196,7 +193,7 @@ You can also add new custom wallets that don't exist in the registry or aren't i
 
 react-celo provides a `connect` function that will open a modal with a list of wallets your user can connect to.
 
-```
+```java
 import { useCelo } from "@celo/react-celo";
 
 function App() {
@@ -221,7 +218,7 @@ After connecting to an account the `address` property will be set.
 
 Now that we've connected to an account and have the users address, we can use the `kit` to query on-chain data:
 
-```
+```java
 import { useCelo } from '@celo/react-celo';
 
 function App() {
@@ -249,7 +246,7 @@ Initially connecting to a user's account is one thing, handled via the `connect`
 
 react-celo will remember a user's last connected address when they navigate back to or refresh your DApp. Ensure that when developing your DApp nothing changes in the UI whether or not the user has a `kit.defaultAccount` property set.
 
-```
+```java
 import { useCelo } from "@celo/react-celo";
 
 const { address } = useCelo();
@@ -262,7 +259,7 @@ When a user refreshes or navigates back to your page, they may not necessarily h
 
 For that functionality we have the `performActions` and `getConnectedKit` methods. Usage looks a little like this for `getConnectedKit`:
 
-```
+```java
 import { useCelo } from "@celo/react-celo";
 
 function App() {
@@ -281,7 +278,7 @@ function App() {
 
 and this for `performActions`:
 
-```
+```java
 import { useCelo } from "@celo/react-celo";
 
 function App() {
@@ -313,7 +310,7 @@ You can also pass in a `network` prop to the `CeloProvider` as the default start
 
 `useCelo` returns two properties. network, an object with a name, chainId and rpc url. it is which chain/network the dapp is communicating with. `walletChainId` is the chainID the wallet/signer is connected to (assuming it this is a concept that it has one) or will be null. unless Manual Networking mode is enabled these will eventually be consistent or walletChainId will be null.
 
-```
+```java
 import { CeloProvider, Alfajores, NetworkNames } from '@celo/react-celo';
 
 function WrappedApp({ Component, pageProps }) {
@@ -342,7 +339,7 @@ function App () {
 
 Be sure to check the react-celo example application for a showcase of how network management works in more depth. Usually you'll want to show a dropdown to your users allowing them to select the network to connect to.
 
-```
+```java
 import { useCelo } from "@celo/react-celo";
 
 function App() {
@@ -373,7 +370,7 @@ Currently react-celo supports dark mode and light (aka default) mode via tailwin
 
 If you default styles aren't to your taste, you can provide a theme object defined as such. You can do it during the setup of your dapp, at the `Provider` level. Or on the fly (let's say, if your users can change the theme of your dapp), via `updateTheme`.
 
-```
+```java
 interface Theme {
   primary: string;
   secondary: string;
@@ -393,7 +390,7 @@ We log by default `debug` or above in development mode. It is determined your en
 
 But you are welcome to provide your own logger at the provider level. It should implement our `ILogger` interface which looks like that:
 
-```
+```java
 interface ILogger {
   debug(...args: unknown[]): void;
   log(...args: unknown[]): void;

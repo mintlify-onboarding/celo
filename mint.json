@@ -71,9 +71,23 @@
                 "libraries-and-sdks/contract-kit/hello-contract-truffle-remote-node",
                 "libraries-and-sdks/contract-kit/query-on-chain-identifiers-with-odis"
               ]
-            }
+            },
+            "libraries-and-sdks/react-celo",
+            "libraries-and-sdks/rainbowkit-celo"
           ]
         }
+      ]
+    },
+    {
+      "group": "Integrations",
+      "pages": [
+        "integration/overview",
+        "integration/dapps",
+        "integration/general",
+        "integration/checklist",
+        "integration/custody",
+        "integration/listings",
+        "integration/cloud-hsm"
       ]
     }
   ],

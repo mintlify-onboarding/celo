@@ -1,9 +1,7 @@
 ---
 title: "Using a Cloud HSM"
----
-
-How to create a cloud HSM in Azure and connect it to `celocli`.
-
+sidebarTitle: "Cloud HSM"
+description: "How to create a cloud HSM in Azure and connect it to `celocli`."
 ---
 
 ## Introduction to HSM[](#introduction-to-hsm "Direct link to heading")
@@ -18,23 +16,23 @@ If you don't have an Azure subscription already, you can [create a free trial he
 
 The Key Vault can store keys, secrets, and certificates. Permission can be specified to perform certain actions across the entire Key Vault (ex. key signing).
 
-* Search the marketplace for "Key Vault"
-* Click Create and fill out the deployment information
-* Ensure you select the Premium pricing tier for HSM support
-* Enable soft-delete and purge protection to ensure your keys aren't accidentally deleted
+- Search the marketplace for "Key Vault"
+- Click Create and fill out the deployment information
+- Ensure you select the Premium pricing tier for HSM support
+- Enable soft-delete and purge protection to ensure your keys aren't accidentally deleted
 
 ## Create your key[](#create-your-key "Direct link to heading")
 
 Next, we'll create the ECDSA key.
 
-* Navigate to your newly created Key Vault and click on the `Keys` section.
-* Click on "Generate/Import"
-* Select "EC-HSM"
-* Select "SECP256K1"
+- Navigate to your newly created Key Vault and click on the `Keys` section.
+- Click on "Generate/Import"
+- Select "EC-HSM"
+- Select "SECP256K1"
 
 You'll see your newly generated key listed in the `Keys` section.
 
-```
+```bash
 # On your local machine
 export AZURE_VAULT_NAME=<VAULT-NAME>
 export AZURE_KEY_NAME=<KEY-NAME>
@@ -49,7 +47,7 @@ Use the [Cloud Shell](https://shell.azure.com/bash) to create the client credent
 
 Create a service principal and configure its access to Azure resources:
 
-```
+```bash
 # In the Cloud Shell
 az ad sp create-for-rbac -n <your-application-name> --skip-assignment
 
@@ -57,7 +55,7 @@ az ad sp create-for-rbac -n <your-application-name> --skip-assignment
 
 The account will be created and will output the account's credentials.
 
-```
+```bash
 {
   "appId": "generated-app-ID",
   "displayName": "dummy-app-name",
@@ -70,7 +68,7 @@ The account will be created and will output the account's credentials.
 
 Set these as environment variables so that they can be used by `celocli` or `contractkit`.
 
-```
+```bash
 # On your local machine
 export AZURE_CLIENT_ID=<GENERATED-APP-ID>
 export AZURE_CLIENT_SECRET=<PASSWORD>
@@ -82,7 +80,7 @@ export AZURE_TENANT_ID=<TENANT-ID>
 
 In the Cloud Shell or Access Policies pane of the Key Vault, set the \[GET, LIST, SIGN\] permission for the new account.
 
-```
+```bash
 # In the Cloud Shell
 az keyvault set-policy --name <your-key-vault-name> --spn $AZURE_CLIENT_ID --key-permissions get list sign
 
@@ -92,7 +90,7 @@ az keyvault set-policy --name <your-key-vault-name> --spn $AZURE_CLIENT_ID --key
 
 Now that your environment variables are set, we just need to let `celocli` know that we want to use this Key Vault signer. We do this by passing in the flag `--useAKV` and `--azureVaultName`. Similar to `--useLedger`, all CLI commands will use the HSM signer when `--useAKV` is specified.
 
-```
+```bash
 # On your local machine
 celocli account:list --useAKV --azureVaultName $AZURE_VAULT_NAME
 
@@ -102,9 +100,9 @@ Your Key Vault address will show up under "Local Addresses". If you'd like to us
 
 ## Connecting ContractKit to KeyVault[](#connecting-contractkit-to-keyvault "Direct link to heading")
 
-To leverage your HSM keys in `contractkit`, first create an `AzureHSMWallet` object and use it to create a `ContractKit` object with `newKitFromWeb3`. Note that `AzureHSMWallet` expects AZURE\_CLIENT\_ID, AZURE\_CLIENT\_SECRET, and AZURE\_TENANT\_ID environment variables to be specified.
+To leverage your HSM keys in `contractkit`, first create an `AzureHSMWallet` object and use it to create a `ContractKit` object with `newKitFromWeb3`. Note that `AzureHSMWallet` expects AZURE_CLIENT_ID, AZURE_CLIENT_SECRET, and AZURE_TENANT_ID environment variables to be specified.
 
-```
+```bash
 import { ContractKit, newKitFromWeb3 } from "@celo/contractkit";
 import { AzureHSMWallet } from "@celo/wallet-hsm-azure";
 
