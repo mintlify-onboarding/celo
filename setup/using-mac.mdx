@@ -3,7 +3,11 @@ title: "Using Mac"
 description: "How to set up a local development environment for Celo using Mac."
 ---
 
-<Tip>While many commands will be the same, you may need to follow the instructions for your specific OS when installing software. The Celo docs have some resources for [Windows development](/developer/setup/windows).</Tip>
+<Tip>
+  While many commands will be the same, you may need to follow the instructions
+  for your specific OS when installing software. The Celo docs have some
+  resources for [Windows development](/developer/setup/windows).
+</Tip>
 
 Before building on Celo, you need to set up a development environment to make sure you have the proper tools to build an application. This setup includes a combination of general development tools, Celo specific tools, and mobile development tools.
 
@@ -47,9 +51,7 @@ which should output nvm.
 
 You can now install Node with `nvm install <version>`.
 
-info
-
-You can switch node versions using
+<Info>You can switch node versions using</Info>
 
 ```bash
 nvm use <version>
@@ -89,9 +91,11 @@ npm install -g yarn
 
 This will install the Yarn global binary.
 
-info
-
-The `-g` is short for `--global`. This flag means you are installing this package on your system and it will be accessible from the cli no matter what project you are in.
+<Info>
+  The `-g` is short for `--global`. This flag means you are installing this
+  package on your system and it will be accessible from the cli no matter what
+  project you are in.
+</Info>
 
 Option 2: Install `yarn` with Homebrew
 
@@ -203,9 +207,14 @@ Celo Wallet is the development wallet to onboard onto the Celo network, manage f
 
 There is a [detailed write-up](https://github.com/celo-org/celo-monorepo) on the celo-monorepo for the Celo Wallet. This guide only includes the summarized installation instructions for macOS. If you're on another OS, please refer to that guide instead of this document.
 
-info
-
-Celo's focus on mobile-first means that the priority has been on mobile applications and tooling. We know there is a growing demand for web applications and have several projects underway to build the tools needed to support web-based applications. In the meantime, you can still use your web-savvy skills to develop mobile apps without too much of a learning curve because of frameworks like React Native and Expo.
+<Tip>
+  Celo's focus on mobile-first means that the priority has been on mobile
+  applications and tooling. We know there is a growing demand for web
+  applications and have several projects underway to build the tools needed to
+  support web-based applications. In the meantime, you can still use your
+  web-savvy skills to develop mobile apps without too much of a learning curve
+  because of frameworks like React Native and Expo.
+</Tip>
 
 ### Celo Wallet Prerequisites[](#celo-wallet-prerequisites "Direct link to heading")
 
@@ -286,9 +295,11 @@ $ brew install android-platform-tools
 
 Next, install [Android Studio](https://developer.android.com/studio) and add the [Android NDK](https://developer.android.com/studio/projects/install-ndk).
 
-info
-
-These paths may differ on your machine. You can find the path to the SDK and NDK via the [Android Studio menu](https://stackoverflow.com/questions/40520324/how-to-find-the-path-to-ndk).
+<Info>
+  These paths may differ on your machine. You can find the path to the SDK and
+  NDK via the [Android Studio
+  menu](https://stackoverflow.com/questions/40520324/how-to-find-the-path-to-ndk).
+</Info>
 
 ```
 export ANDROID_HOME=/usr/local/share/android-sdk
@@ -323,7 +334,7 @@ Under OSX High Sierra and later, you'll get a message that you need to [approve 
 
 Do that, and then repeat the line above.
 
-Then make sure the ADB path is set correctly in Genymotion — set Preferences > ADB > Use custom Android SDK tools to /usr/local/share/android-sdk (same as $ANDROID\_HOME)
+Then make sure the ADB path is set correctly in Genymotion — set Preferences > ADB > Use custom Android SDK tools to /usr/local/share/android-sdk (same as $ANDROID_HOME)
 
 ### Extras[](#extras "Direct link to heading")
 
