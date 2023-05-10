@@ -1,14 +1,12 @@
 ---
 title: "Upgrade a Node"
----
-
-How to upgrade to the newest available version of a Celo node.
-
+sidebarTitle: "Upgrade a Celo Node"
+description: "How to upgrade to the newest available version of a Celo node."
 ---
 
 ## Recent Releases[](#recent-releases "Direct link to heading")
 
-* [You can view the latest releases here.](https://github.com/celo-org/celo-blockchain/releases)
+- [You can view the latest releases here.](https://github.com/celo-org/celo-blockchain/releases)
 
 ## When an upgrade is required[](#when-an-upgrade-is-required "Direct link to heading")
 
@@ -22,7 +20,7 @@ Use these instructions to update non-validating nodes, such as your account node
 
 ### Pull the latest Docker image[](#pull-the-latest-docker-image "Direct link to heading")
 
-```
+```bash
 export CELO_IMAGE=us.gcr.io/celo-org/geth:mainnet
 docker pull $CELO_IMAGE
 
@@ -34,7 +32,7 @@ Stop and remove the existing node. Make sure to stop the node gracefully (i.e. g
 
 Note: The `docker run` commands in the documentation have been updated to now include `--stop-timeout 300`, which should make the `-t 300` in `docker stop` below redundant. However, it is still recommended to include it just in case.
 
-```
+```bash
 docker stop -t 300 celo-fullnode
 docker rm celo-fullnode
 
@@ -44,10 +42,10 @@ docker rm celo-fullnode
 
 Start the new node using `docker run` as detailed in the appropriate section of the getting started guide. Remember to recover any environment variables, if using a new terminal, before running the documented commands.
 
-* [Full node](/validator/run/mainnet#start-the-node)
-* [Accounts node](/validator/run/mainnet#start-your-accounts-node)
-* [Attestion node](/validator/run/mainnet#running-the-attestation-service)
-* [Proxy node](/validator/run/mainnet#deploy-a-proxy)
+- [Full node](/validator/run/mainnet#start-the-node)
+- [Accounts node](/validator/run/mainnet#start-your-accounts-node)
+- [Attestion node](/validator/run/mainnet#running-the-attestation-service)
+- [Proxy node](/validator/run/mainnet#deploy-a-proxy)
 
 ## Upgrading a Validating Node[](#upgrading-a-validating-node "Direct link to heading")
 
@@ -59,60 +57,69 @@ A second option is to perform a hot-swap to switch over to a new validator node.
 
 ### Hotswapping Validator Nodes[](#hotswapping-validator-nodes "Direct link to heading")
 
-info
-
-Hotswap is being introduced in version 1.2.0\. When upgrading nodes that are not yet on 1.2.0 refer to the guide to perform a key rotation.
+<Info>
+  Hotswap is being introduced in version 1.2.0\. When upgrading nodes that are
+  not yet on 1.2.0 refer to the guide to perform a key rotation.
+</Info>
 
 Validators can be configured as primaries or replicas. By default validators start as primaries and will persist all changes around starting or stopping. Through the istanbul management RPC API the validator can be configured to start or stop at a specified block. The validator will participate in consensus for block numbers in the range `[start, stop)`.
 
-danger
-
-Note that the replica node **must** use the same set of proxies as the primary node. If it does not it will not be able to switchover without downtime due to needing to the complete the announce protocol from scratch. Replicas behind the same set of proxies as the primary node will be able to switchover without downtime.
+<Warning>
+  Note that the replica node **must** use the same set of proxies as the primary
+  node. If it does not it will not be able to switchover without downtime due to
+  needing to the complete the announce protocol from scratch. Replicas behind
+  the same set of proxies as the primary node will be able to switchover without
+  downtime.
+</Warning>
 
 #### RPC Methods[](#rpc-methods "Direct link to heading")
 
-* `istanbul.start()` and `istanbul.startAtBlock()` start validating immediately or at a block
-* `istanbul.stop()` and `istanbul.stopAtBlock()` stop validating immediately or at a block
-* `istanbul.replicaState` will give you the state of the node and the start/stop blocks
-* `istanbul.validating` will give you true/false if the node is validating
+- `istanbul.start()` and `istanbul.startAtBlock()` start validating immediately or at a block
+- `istanbul.stop()` and `istanbul.stopAtBlock()` stop validating immediately or at a block
+- `istanbul.replicaState` will give you the state of the node and the start/stop blocks
+- `istanbul.validating` will give you true/false if the node is validating
 
-info
-
-`startAtBlock` and `stopAtBlock` must be given a block in the future.
+<Info>
+  `startAtBlock` and `stopAtBlock` must be given a block in the future.
+</Info>
 
 #### Geth Flags[](#geth-flags "Direct link to heading")
 
-* `--istanbul.replica` flag which starts a validator in replica mode.
+- `--istanbul.replica` flag which starts a validator in replica mode.
 
 On startup, nodes will look to see if there is a `replicastate` folder inside it's data directory. If that folder exists the node will configure itself as a validator or replica depending on the previous stored state. The stored state will take precedence over the command line flags. If the folder does not exists the node will stored it's state as configured by the command line. When RPC calls are made to start or stop validating, those changes will be persisted to the `replicastate` folder.
 
-caution
-
-If reconfiguring a node to be a replica or reusing a data directory, make sure that the node was previously configured as replica or that the `replicastate` folder is removed. If there is an existing `replicastate` folder from a node that was not configured as a replica the node will attempt to start validating.
+<Warning>
+  If reconfiguring a node to be a replica or reusing a data directory, make sure
+  that the node was previously configured as replica or that the `replicastate`
+  folder is removed. If there is an existing `replicastate` folder from a node
+  that was not configured as a replica the node will attempt to start
+  validating.
+</Warning>
 
 #### Steps to upgrade[](#steps-to-upgrade "Direct link to heading")
 
 1. Pull the latest docker image.
-2. Start a new validator node on a second host in replica mode (`--istanbul.replica` flag). It should be otherwise configured exactly the same as the existing validator.  
-   * It needs to connect to the exisiting proxies and the validator signing key to connect to other validators in listen mode.  
-   * If reconfiguring a node to be a replica or reusing a data directory, make sure that the node was previously configured as replica or that the `replicastate` folder is removed.
-3. Once the replica is synced and has validator enode urls for all validators, it is ready to swapped in.  
-   * Check validator enode urls with `istanbul.valEnodeTableInfo` in the geth console. The field `enode` should be filled in for each validator peer.
-4. In the geth console on the primary run `istanbul.stopAtBlock(xxxx)`  
-   * Make sure to select a block number comfortably in the future.  
-   * You can check what the stop block is with `istanbul.replicaState` in the geth console.  
-   * You can run `istanbul.start()` to clear the stop block
-5. In the geth console of the replica run `istanbul.startAtBlock(xxxx)`  
-   * You can check what the start block is with `istanbul.replicaState` in the geth console.  
-   * You can run `istanbul.stop()` to clear the start block
-6. Confirm that the transition occurred with `istanbul.replicaState`  
-   * The last block that the old primary will sign is block number `xxxx - 1`  
-   * The first block that the new primary will sign is block number `xxxx`
+2. Start a new validator node on a second host in replica mode (`--istanbul.replica` flag). It should be otherwise configured exactly the same as the existing validator.
+   - It needs to connect to the exisiting proxies and the validator signing key to connect to other validators in listen mode.
+   - If reconfiguring a node to be a replica or reusing a data directory, make sure that the node was previously configured as replica or that the `replicastate` folder is removed.
+3. Once the replica is synced and has validator enode urls for all validators, it is ready to swapped in.
+   - Check validator enode urls with `istanbul.valEnodeTableInfo` in the geth console. The field `enode` should be filled in for each validator peer.
+4. In the geth console on the primary run `istanbul.stopAtBlock(xxxx)`
+   - Make sure to select a block number comfortably in the future.
+   - You can check what the stop block is with `istanbul.replicaState` in the geth console.
+   - You can run `istanbul.start()` to clear the stop block
+5. In the geth console of the replica run `istanbul.startAtBlock(xxxx)`
+   - You can check what the start block is with `istanbul.replicaState` in the geth console.
+   - You can run `istanbul.stop()` to clear the start block
+6. Confirm that the transition occurred with `istanbul.replicaState`
+   - The last block that the old primary will sign is block number `xxxx - 1`
+   - The first block that the new primary will sign is block number `xxxx`
 7. Tear down the old primary once the transition has occurred.
 
 Example geth console on the old primary.
 
-```
+```bash
 > istanbul.replicaState
 {
   isPrimary: true,
@@ -141,7 +148,7 @@ null
 
 Example geth console on the replica being promoted to primary. Not shown is confirming the node is synced and connected to validator peers.
 
-```
+```bash
 > istanbul.replicaState
 {
   isPrimary: false,
@@ -170,8 +177,9 @@ null
 
 ### Upgrading Proxy Nodes[](#upgrading-proxy-nodes "Direct link to heading")
 
-danger
-
-Release 1.2.0 is backwards incompatible in the Validator and Proxy connection. Validators and proxies must be upgraded to 1.2.0 at the same time.
+<Warning>
+  Release 1.2.0 is backwards incompatible in the Validator and Proxy connection.
+  Validators and proxies must be upgraded to 1.2.0 at the same time.
+</Warning>
 
 With multi-proxy, you can upgrade proxies one by one or can add newly synced proxies with the latest Docker image and can remove the old proxies. If upgrading the proxies in place, a rolling upgrade is recommended as the validator will re-assign direct connections as proxies are added and removed. These re-assignments will allow the validator to continue to participate in consensus.

@@ -1,9 +1,7 @@
 ---
 title: "Detailed Role Descriptions"
----
-
-Detailed description of the various account roles found in the Celo protocol with examples of how to designate an account as playing a particular role.
-
+sidebarTitle: "Key Management"
+description: "Detailed description of the various account roles found in the Celo protocol with examples of how to designate an account as playing a particular role."
 ---
 
 ## Celo Accounts[](#celo-accounts "Direct link to heading")
@@ -24,7 +22,7 @@ Because of the significant priveleges afforded to the Locked Gold Account, it is
 
 A Celo account may be designated as a Locked Gold Account by running the following command:
 
-```
+```bash
 # Designate the Celo account as a Locked Gold Account
 celocli account:register --from $ADDRESS_TO_DESIGNATE --useLedger
 
@@ -47,7 +45,7 @@ Authorized vote signers can only be used to send voting transactions and **can b
 
 A Celo account may be authorized as a vote signer on behalf of a Locked Gold Account by running the following commands:
 
-```
+```bash
 # Create a proof-of-possession. Note that the signer private key must be available.
 celocli account:proof-of-possession --account $LOCKED_GOLD_ACCOUNT --signer $SIGNER_TO_AUTHORIZE --useLedger
 
@@ -80,7 +78,7 @@ Note that the validator signer must first generate a "proof-of-possession" indic
 
 A Celo account may be authorized as a validator signer on behalf of a Locked Gold Account by running the following commands:
 
-```
+```bash
 # Create a proof-of-possession. Note that the signer private key must be available.
 # Note that the signing key can be kept on a Ledger if it will be used to run a Validator Group.
 celocli account:proof-of-possession --account $LOCKED_GOLD_ACCOUNT --signer $SIGNER_TO_AUTHORIZE
@@ -115,7 +113,7 @@ Advanced users may optionally derive their BLS key separately, but that is out o
 
 To derive a BLS public key and proof-of-possession from the authorized validator signer key, and use that information to register a validator, run the following commands:
 
-```
+```bash
 # Derive the BLS public key and create a proof-of-possession. Note that the signer private key must be available.
 # Also note that BLS proof-of-possessions are not currently supported by celocli
 docker run -v $PWD:/root/.celo --rm -it $CELO_IMAGE account proof-of-possession $AUTHORIZED_VALIDATOR_SIGNER $LOCKED_GOLD_ACCOUNT --bls
@@ -143,7 +141,7 @@ Note that the attestation signer must first be used to generate a "proof-of-poss
 
 A Celo account may be authorized as a vote signer on behalf of a Locked Gold Account by running the following commands:
 
-```
+```bash
 # Create a proof-of-possession. Note that the signer private key must be available.
 celocli account:proof-of-possession --account $LOCKED_GOLD_ACCOUNT --signer $SIGNER_TO_AUTHORIZE
 # If celocli is unavailable on the attestations node, the proof-of-possession can be generated with celo-blockchain
