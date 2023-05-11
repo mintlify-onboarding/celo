@@ -227,7 +227,7 @@ There is a [detailed write-up](https://github.com/celo-org/celo-monorepo) on the
 
 You can install [Watchman](https://facebook.github.io/watchman/docs/install.html) with brew
 
-```bash
+```java
 # Update brew if you haven't recently
 $ brew update
 
@@ -252,7 +252,7 @@ Once this is done downloading, install it.
 
 Navigate to the iOS directory of the mobile package (/celo-monorepo/packages/mobile/ios) and run the following to install [cocoapods](https://cocoapods.org/) and [bundler](https://bundler.io/).
 
-```
+```java
 # install cocopods and bundler if you don't already have it
 $ gem install cocoapods # you might need to run with sudo if this fails
 $ gem install bundler
@@ -277,7 +277,7 @@ Java allows you to build and deploy the mobile app to Android devices.
 
 Install by running the following:
 
-```
+```java
 $ brew install cask
 $ brew tap homebrew/cask-versions
 $ brew install homebrew/cask-versions/adoptopenjdk8
@@ -288,7 +288,7 @@ $ brew install homebrew/cask-versions/adoptopenjdk8
 
 Install the Android SDK and platform-tools
 
-```
+```java
 $ brew install android-sdk
 $ brew install android-platform-tools
 
@@ -302,7 +302,7 @@ Next, install [Android Studio](https://developer.android.com/studio) and add the
   menu](https://stackoverflow.com/questions/40520324/how-to-find-the-path-to-ndk).
 </Info>
 
-```
+```java
 export ANDROID_HOME=/usr/local/share/android-sdk
 export ANDROID_NDK=/usr/local/share/android-ndk
 export ANDROID_SDK_ROOT=/usr/local/share/android-sdk
@@ -313,7 +313,7 @@ export GRADLE_OPTS='-Dorg.gradle.daemon=true -Dorg.gradle.parallel=true -Dorg.gr
 
 Then install the Android 29 platform
 
-```
+```java
 sdkmanager 'platforms;android-29
 
 ```
@@ -326,7 +326,7 @@ For the same reason you installed the emulator iOS (you may or may not have an A
 
 One Android emulator option is Genymotion.
 
-```
+```java
 brew install genymotion
 
 ```
